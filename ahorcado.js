@@ -103,7 +103,7 @@ jugar.addEventListener("click",function(){
                     if (letra == palabraAhorcadoString[index]) {
                         pincel.fillStyle = "bold red";
                         pincel.fillText(letra,(505+50*index),375);
-                        numAgrup = numAgrup + 1;
+                        numAgrup +=1;
                     }
                 }
                 
@@ -114,7 +114,7 @@ jugar.addEventListener("click",function(){
                     pincel.strokeStyle = "blue";
                     pincel.fillText("Para REINICIAR EL JUEGO da click abajo",550,250);
                     pincel.fillText("en el botón respectivo",650,280);
-                    reiniciar.classList.remove("invisible");
+                    reiniciar.classList.remove("reiniciar");
                 }
                 
                 // Iteración para caso DERROTA
@@ -171,12 +171,12 @@ jugar.addEventListener("click",function(){
                         pincel.fillStyle = "black";
                         pincel.fillText(letra,(550+50*numNoAgrup),50);
                         dibujar8();
-                        pincel.fillStyle = "bold red";
+                        pincel.fillStyle = "black";
                         pincel.fillText("Fin del juego!",690,200);
                         pincel.strokeStyle = "bold red";
                         pincel.fillText("Para REINICIAR EL JUEGO da click abajo",550,250);
                         pincel.fillText("en el botón respectivo",650,280);
-                        reiniciar.classList.remove("invisible");
+                        reiniciar.classList.remove("reiniciar");
                     }
                 }
 
