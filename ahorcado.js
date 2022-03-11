@@ -3,7 +3,7 @@ var pantalla = document.querySelector("#ahorcado");
 
 var pincel = pantalla.getContext("2d");
 pincel.strokeStyle = "black";
-pincel.font = "bold 22px sans-serif";
+pincel.font = "bold 22px arial";
 
 // Lista de palabras original
 var palabras = ["AGUA","ALMACEN","TELEFONO","CELULAR","MONITOR"];
