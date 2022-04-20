@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Juego del Ahorcado</title>
+    <title>Ahorcado Alura</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
   </head>
-
   <body>
-    <div style="text-align:center; margin: 50px 0px;">
-      <h1 class="titulo">JUEGO DEL AHORCADO</h1>
-      <button class="btn" id="iniciar-juego">INICIAR JUEGO</button>
-    </div>
-    <div style="text-align:center">
-      <input class="text-input" type="text" id="input-nueva-palabra" placeholder="Escriba una nueva palabra">
-      <button class="btn" id="nueva-palabra">AGREGAR PALABRA</button> 
-    </div>
-    <div style="text-align:center;">
-
-      <canvas class="zona-ahorcado" id="ahorcado" height="400px" width="1000px"></canvas>
-    </div>
-
-    <div style="text-align:center;">
-      <button class="reiniciar" id="reiniciar-juego">REINICIAR JUEGO</button>
-    </div>
-    <div style="text-align:bottom;">
-      <br>     
-    </div>
-    <script type="text/javascript" src="ahorcado.js"></script>
-    <script type="text/javascript" src="canvas.js"></script>
-
-    <footer class="pie-pagina">Desarrollado por <strong>Hernurqui 2022</strong></footer>
+    <div class="fondo">
+      <div style="text-align:center; margin: 30px 0px;">
+        <h1 class="titulo">Ahorcado</h1>
+        <button id="iniciar-juego" class="btn" >INICIAR JUEGO</button>
+      </div>
+      <canvas id="canvs"  class="oculto" width="800px" height="600px"></canvas>
+      <div style="text-align:center">
+        <span id="eti-span" class="letra"></span>
+      </div>
+     
+      <div style="text-align:center">
+        <input class="text-input" type="text" id="input-nueva-palabra" placeholder="Escriba una nueva palabra" maxlength="11">
+        <button class="btn" id="nueva-palabra">AGREGAR PALABRA</button> 
+      </div>
+      <div style="text-align:center;">
+        
+        <!--<canvas id="ahorcado" height="800px" width="1200px"></canvas>-->
+      </div>
+      <script type="text/javascript" src="canvas.js"></script>
+      <script type="text/javascript" src="ahorcado.js"></script>
+      <script type="text/javascript" src="alertas.js"></script>
+  </div>
   </body>
 </html>

@@ -1,82 +1,144 @@
+var pantalla = document.querySelector("canvas");
+var pincel = pantalla.getContext("2d");
 
-//Base
-function dibujarBase() {
-    pincel.beginPath();
-    pincel.moveTo(10,390);
-    pincel.lineTo(110,390);
-    pincel.lineTo(60,370);
-    pincel.closePath();
-    pincel.stroke();
+var arrayPalabras = ["GATO", "PERRO", "CASA", "TOMATE", "AUTO", "VENTANA", "CIUDAD"];
+var intentos= 0;
+
+
+function palabraSecreta(array){
+	var palabra_seleccionada = array[Math.floor(Math.random()*array.length)]
+	
+	return palabra_seleccionada;
 }
 
-//Palo
-function dibujar0() {
-    pincel.beginPath();
-    pincel.moveTo(60,370);
-    pincel.lineTo(60,10);
-    pincel.stroke();    
+var palabra = palabraSecreta(arrayPalabras);
+
+//FUNCION PARA INICIAR EL JUEGO
+function iniciarJuego(){
+	
+	pantalla.classList.remove("oculto");
+	//console.log(palabra);
+	dibujarBase(); //DIBuJAMOS LA BASE DDEL AHORCADO
+	guiones();  //DIBUJAMOS LOS GUIONES DE LAS LETRAS
+	
+
+	if((intentos== 9) || (!partida)){
+		
+		return;
+		
+	}else{
+
+		window.addEventListener("keyup", function(event){ //CAPTURAR TECLA	
+			var letra_tipeada = event.key.toUpperCase();
+			var expresion = /[A-Z]/;
+			var comparacion = letra_tipeada.match(expresion);
+			if((intentos== 9) || (!partida)){
+			
+				return;		
+			}
+			
+			if ((comparacion == null) || (letra_tipeada.length > 1)) {
+
+				alert("Tecla presionada no es válida, sólo se permiten letras");
+				
+				
+			}else{
+				
+				dibujarLetra(palabra, letra_tipeada);
+			}		
+		});
+	}
+}
+///FUNCION PARA GUIONES
+function guiones (){
+	var cantidad = palabra.length;
+	var x=400;
+	var y=500;		
+
+
+	for(var i=1; i<=cantidad; i++){
+
+		pincel.beginPath();	
+		pincel.lineWidth = 2;	
+		pincel.moveTo((x+10), y);
+		pincel.lineTo((x+35),y);
+		pincel.stroke();
+		
+		x= x +30;
+	}
+		
 }
 
-//Travesaño
-function dibujar1() {
-    pincel.beginPath();
-    pincel.moveTo(60,10);
-    pincel.lineTo(310,10);
-    pincel.stroke();
-}
 
-//Colgante
-function dibujar2() {
-    pincel.beginPath();
-    pincel.moveTo(310,10);
-    pincel.lineTo(310,50);
-    pincel.stroke();
-}
+///FUNCION PARALA BASE DEL AHORCADO
+function dibujarBase(){
 
-//Cabeza
-function dibujar3() {
-    pincel.beginPath();
-    pincel.arc(310,90,40,0,2*3.1416);
-    pincel.stroke();
-}
-
-//Tronco
-function dibujar4() {
-    pincel.beginPath();
-    pincel.moveTo(310,130);
-    pincel.lineTo(310,260);
-    pincel.stroke();
+		pincel.fillStyle= "black";
+		pincel.beginPath();
+		pincel.moveTo(70,470);
+		pincel.lineTo(130,500);
+		pincel.lineTo(10,500);
+		pincel.fill();
 }
 
 
-//Pierna izquierda
-function dibujar5() {
-    pincel.beginPath();
-    pincel.moveTo(310,260);
-    pincel.lineTo(240,340);
-    pincel.stroke();
-}
+function dibujarHorca(){
 
-//Pierna derecha
-function dibujar6() {
-    pincel.beginPath();
-    pincel.moveTo(310,260);
-    pincel.lineTo(380,340);
-    pincel.stroke();
-}
-
-//Brazo izquierdo
-function dibujar7() {
-    pincel.beginPath();
-    pincel.moveTo(310,195);
-    pincel.lineTo(240,125);
-    pincel.stroke();
-}
-
-//Brazo derecho
-function dibujar8() {
-    pincel.beginPath();
-    pincel.moveTo(310,195);
-    pincel.lineTo(380,125);
-    pincel.stroke();
+	intentos++;
+	pincel.beginPath();
+	pincel.lineWidth = 5;
+	
+	if(intentos == 1){
+			
+		pincel.moveTo(70,473);
+		pincel.lineTo(70,50);
+		pincel.stroke();
+		
+	}if(intentos == 2){
+			
+		pincel.moveTo(70,50);
+		pincel.lineTo(250,50);
+		pincel.stroke();
+		
+	}if(intentos == 3){
+			
+		pincel.moveTo(250,50);
+		pincel.lineTo(250,100);
+		pincel.stroke();
+		
+	}if(intentos == 4){
+			
+		pincel.arc(250,148,50,0,2*Math.PI); //círculo completo.
+		pincel.stroke();
+		
+	}if(intentos == 5){//TONCO
+			
+		pincel.moveTo(250,198);
+		pincel.lineTo(250,400);
+		pincel.stroke();
+		
+	}if(intentos == 6){ //PIERNA 1
+			
+		pincel.moveTo(250,400);
+		pincel.lineTo(200,480);
+		pincel.stroke();
+		
+	}if(intentos == 7){ //PIERNA 2
+			
+		pincel.moveTo(250,400);
+		pincel.lineTo(300,480);
+		pincel.stroke();
+		
+	}if(intentos == 8){ //BRAZO 1
+			
+		pincel.moveTo(250,300);
+		pincel.lineTo(180,245);
+		pincel.stroke();
+		
+	}if(intentos == 9){ //BRAZO 2
+			
+		pincel.moveTo(250,300);
+		pincel.lineTo(320,245);
+		pincel.stroke();	
+	}	
 }
